@@ -1,0 +1,130 @@
+{{ 'section-xw-cart.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-xw-cart-container {
+    padding: 40px 100px 36px;
+  }
+
+  .xw-cart-header {
+    h1 {
+      height: 49px;
+      margin-bottom: 20px;
+
+      font-family: Manrope;
+      font-size: 36px;
+      font-weight: 700;
+      line-height: 49px;
+      text-align: left;
+      color: rgba(27, 29, 29, 1);
+    }
+
+    h2 {
+      height: 22px;
+      margin-bottom: 60px;
+
+      font-family: Manrope;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 22px;
+      text-align: left;
+      color: #333;
+    }
+  }
+
+  .xw-cart-body {
+    display: flex;
+    justify-content: space-between;
+    gap: 37px;
+  }
+
+  .xw-cart-body .body-products {
+    min-width: 819px;
+  }
+
+  .xw-cart-body .body-products .body-bill {
+    flex: 1;
+  }
+
+  .xw-cart-body .body-products .product-item {
+    display: flex;
+    justify-content: flex-start;
+
+    border-bottom: 1px solid rgba(210, 210, 215, 1);
+  }
+
+  .xw-cart-body .body-products .product-item .product-desc {
+  }
+{%- endstyle -%}
+
+{%- unless settings.cart_type == 'drawer' -%}
+  <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
+{%- endunless -%}
+
+<script src="{{ 'quantity-popover.js' | asset_url }}" defer="defer"></script>
+
+{% comment %} 这里是渲染的模板内容 {% endcomment %}
+
+<div class="section-xw-cart-container">
+  <div class="xw-cart-header">
+    <h1>My Shopping Cart</h1>
+    <h2>Free Shipping + 30 Days Free Return</h2>
+  </div>
+
+  <div class="xw-cart-body">
+    <div class="body-products">
+      {%- if cart != empty -%}
+        {%- for item in cart.items -%}
+          <li class="product-item">
+            <a href="{{ item.url }}">
+              {% if item.image %}
+                <img
+                  width="260"
+                  height="260"
+                  src="{{ item.image | image_url: width: 260 }}"
+                  alt="{{ item.title }}"
+                  height="{{ 260 | divided_by: item.image.aspect_ratio | ceil }}"
+                >
+              {% endif %}
+            </a>
+            <div class="product-desc">
+              <h1 class="title">LTV-3500 Pro Plus 100''-120" AWOL Vision Acoustic ALR Floor Rising Screen Bundle</h1>
+              <p class="size-wrap">
+                <span class="size-text">SIZE: 100’’ </span>
+                <span class="size-tag">GET FREE 3D GLASSES 4 PCS (- $0.00)</span>
+              </p>
+              <p class="quantity-wrap">
+                <span class="quantity-select"></span>
+                <span class="quantity-remove-btn">Remove</span>
+              </p>
+              <p class="price-wrap">
+                <span class="current-price">1111</span>
+                <span class="original-price">2222</span>
+                <span class="save-fees">11</span>
+              </p>
+              <p class="others-wrap">Starting at $271/mo or 0% APR with</p>
+              <p class="others-wrap">Starting at $271/mo or 0% APR with</p>
+            </div>
+          </li>
+        {% endfor %}
+      {%- endif -%}
+    </div>
+    <div class="body-bill"></div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.xw-cart.name",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [],
+  "presets": [
+    {
+      "name": "Default"
+    }
+  ]
+}
+{% endschema %}
