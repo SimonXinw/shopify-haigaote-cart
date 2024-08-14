@@ -1,9 +1,9 @@
 {
     "sections": {
-        "xw-cart": {
-            "type": "xw-cart",
-            "settings": {}
-        },
+        // "xw-cart": {
+        //     "type": "xw-cart",
+        //     "settings": {}
+        // },
         "cart-items": {
             "type": "main-cart-items",
             "settings": {
@@ -36,7 +36,7 @@
         }
     },
     "order": [
-        "xw-cart",
+        // "xw-cart",
         "cart-items",
         "cart-footer"
     ]

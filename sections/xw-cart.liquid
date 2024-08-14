@@ -3,138 +3,144 @@
 {%- style -%}
 {%- endstyle -%}
 
-{%- unless settings.cart_type == 'drawer' -%}
-  <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
-{%- endunless -%}
+<script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'section-xw-cart.js' | asset_url }}" defer="defer"></script>
 
 <script src="{{ 'quantity-popover.js' | asset_url }}" defer="defer"></script>
 
 {% comment %} 这里是渲染的模板内容 {% endcomment %}
 
-<div class="section-xw-cart-container">
+<section-xw-cart-container class="section-xw-cart-container">
   <div class="xw-cart-header">
     <h1>My Shopping Cart</h1>
     <h2>Free Shipping + 30 Days Free Return</h2>
   </div>
 
   <div class="xw-cart-body">
-    <div class="body-products">
-      {%- if cart != empty -%}
-        {%- for item in cart.items -%}
-          <div class="product-item">
-            <a href="{{ item.url }}">
-              {% if item.image %}
-                <img
-                  width="260"
-                  height="260"
-                  src="{{ item.image | image_url: width: 260 }}"
-                  alt="{{ item.title }}"
-                  height="{{ 260 | divided_by: item.image.aspect_ratio | ceil }}"
-                >
-              {% endif %}
-            </a>
-            <div class="product-desc">
-              <div class="desc-title">
-                LTV-3500 Pro Plus 100''-120" AWOL Vision Acoustic ALR Floor Rising Screen Bundle
-              </div>
-              <p class="size-wrap">
-                <span class="size-text">SIZE: 100’’ </span>
-                <span class="size-tag">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g id="Frame">
-                      <path id="Vector" d="M1.61668 6.94522L6.93092 1.63093C7.12829 1.43379 7.36256 1.27746 7.62035 1.17087C7.87814 1.06428 8.1544 1.00952 8.43336 1.00971L12.8684 1.01033H12.8687C14.0425 1.01033 14.9952 1.95949 14.9952 3.13354V7.56594C14.995 8.12978 14.7709 8.67045 14.3721 9.06906L9.05599 14.3853C8.85864 14.5827 8.62433 14.7393 8.36647 14.8461C8.1086 14.9529 7.83222 15.0079 7.55311 15.0079C7.27399 15.0079 6.99761 14.9529 6.73975 14.8461C6.48188 14.7393 6.24758 14.5827 6.05022 14.3853L1.61668 9.95156C0.786557 9.12138 0.786557 7.77535 1.61668 6.94522ZM2.32309 9.24511L6.75662 13.6789C6.86118 13.7835 6.98532 13.8664 7.12195 13.923C7.25858 13.9796 7.40502 14.0087 7.55291 14.0087C7.7008 14.0087 7.84724 13.9796 7.98387 13.923C8.1205 13.8664 8.24464 13.7835 8.3492 13.6789L13.665 8.3626C13.8766 8.15141 13.9957 7.86485 13.9962 7.56589V3.13354C13.996 2.98568 13.9667 2.8393 13.91 2.70277C13.8532 2.56624 13.7701 2.44223 13.6654 2.33783C13.5607 2.23344 13.4365 2.15069 13.2998 2.09434C13.1631 2.03798 13.0166 2.00912 12.8688 2.00939L8.4337 2.00877C8.28592 2.00855 8.13955 2.0375 8.00299 2.09395C7.86642 2.1504 7.74233 2.23324 7.63783 2.33773L2.32354 7.65185C2.11221 7.86307 1.99343 8.14959 1.99335 8.44838C1.99326 8.74718 2.11187 9.03376 2.32309 9.24511Z" fill="#666666"></path>
-                      <path id="Vector_2" d="M9.99995 4C11.1046 4 12 4.89543 12 6.00005C12 7.10467 11.1046 7.99999 9.99995 7.99999C8.89533 7.99999 7.99996 7.10455 7.99996 5.99999C7.99996 4.89543 8.89545 4 9.99995 4ZM9.2922 6.70775C9.45593 6.87151 9.67138 6.97343 9.90184 6.99614C10.1323 7.01885 10.3635 6.96095 10.5561 6.8323C10.7486 6.70366 10.8906 6.51223 10.9578 6.29063C11.0251 6.06903 11.0134 5.83097 10.9248 5.61702C10.8361 5.40307 10.6761 5.22647 10.4719 5.1173C10.2676 5.00814 10.0319 4.97316 9.80474 5.01834C9.57762 5.06352 9.37319 5.18605 9.22628 5.36506C9.07937 5.54407 8.99908 5.76848 8.99908 6.00005C8.99873 6.13154 9.02446 6.26179 9.07478 6.38326C9.12511 6.50474 9.19897 6.61503 9.2922 6.70775Z" fill="#666666"></path>
-                    </g>
-                  </svg>
-                  <span style="margin-left: 5px;">GET FREE 3D GLASSES 4 PCS (- $0.00)</span>
-                </span>
-              </p>
-              <div class="quantity-wrap">
-                <div class="quantity-select quantity-popover-container">
-                  <quantity-input class="quantity cart-quantity">
-                    <button class="quantity__button" name="minus" type="button">
-                      <span class="visually-hidden">Decrease quantity for 3D Glasses (2 Pairs)</span>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                        focusable="false"
-                        class="icon icon-minus"
-                        fill="none"
-                        viewBox="0 0 10 2"
-                      >
-                          <path fill-rule="evenodd" clip-rule="evenodd" d="M.5 1C.5.7.7.5 1 .5h8a.5.5 0 110 1H1A.5.5 0 01.5 1z" fill="currentColor">
-                        </path>
-                      </svg>
-                    </button>
-                    <input
-                      class="quantity__input"
-                      data-quantity-variant-id="45646830108890"
-                      type="number"
-                      name="updates[]"
-                      value="1"
-                      data-cart-quantity="1"
-                      min="0"
-                      data-min="1"
-                      step="1"
-                      aria-label="Quantity for 3D Glasses (2 Pairs)"
-                      id="Quantity-2"
-                      data-index="2"
-                    >
-                    <button class="quantity__button" name="plus" type="button">
-                      <span class="visually-hidden">Increase quantity for 3D Glasses (2 Pairs)</span>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                        focusable="false"
-                        class="icon icon-plus"
-                        fill="none"
-                        viewBox="0 0 10 10"
-                      >
-                          <path fill-rule="evenodd" clip-rule="evenodd" d="M1 4.51a.5.5 0 000 1h3.5l.01 3.5a.5.5 0 001-.01V5.5l3.5-.01a.5.5 0 00-.01-1H5.5L5.49.99a.5.5 0 00-1 .01v3.5l-3.5.01H1z" fill="currentColor">
-                        </path>
-                      </svg>
-                    </button>
-                  </quantity-input>
-                </div>
-                <span
-                  class="quantity-remove-btn"
-                  id="Remove-{{ item.index | plus: 1 }}"
-                  data-index="{{ item.index | plus: 1 }}"
-                >
-                  <a
-                    href="{{ item.url_to_remove }}"
-                    class="button button--tertiary"
-                    aria-label="{{ 'sections.cart.remove_title' | t: title: item.title | escape }}"
+    <form action="{{ routes.cart_url }}" class="cart__contents critical-hidden" method="post" id="cart">
+      <div class="body-products" id="body-products" data-id="{{ section.id }}">
+        {%- if cart != empty -%}
+          {%- for item in cart.items -%}
+            <div class="product-item" id="productItem-{{ forloop.index }}">
+              <a href="{{ item.url }}">
+                {% if item.image %}
+                  <img
+                    width="260"
+                    height="260"
+                    src="{{ item.image | image_url: width: 260 }}"
+                    alt="{{ item.title }}"
+                    height="{{ 260 | divided_by: item.image.aspect_ratio | ceil }}"
                   >
-                    Remove
-                  </a>
-                </span>
-              </div>
+                {% endif %}
+              </a>
+              <div class="product-desc">
+                <div class="desc-title">
+                  LTV-3500 Pro Plus 100''-120" AWOL Vision Acoustic ALR Floor Rising Screen Bundle
+                </div>
+                <p class="size-wrap">
+                  <span class="size-text">SIZE: 100’’ </span>
+                  <span class="size-tag">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <g id="Frame">
+                        <path id="Vector" d="M1.61668 6.94522L6.93092 1.63093C7.12829 1.43379 7.36256 1.27746 7.62035 1.17087C7.87814 1.06428 8.1544 1.00952 8.43336 1.00971L12.8684 1.01033H12.8687C14.0425 1.01033 14.9952 1.95949 14.9952 3.13354V7.56594C14.995 8.12978 14.7709 8.67045 14.3721 9.06906L9.05599 14.3853C8.85864 14.5827 8.62433 14.7393 8.36647 14.8461C8.1086 14.9529 7.83222 15.0079 7.55311 15.0079C7.27399 15.0079 6.99761 14.9529 6.73975 14.8461C6.48188 14.7393 6.24758 14.5827 6.05022 14.3853L1.61668 9.95156C0.786557 9.12138 0.786557 7.77535 1.61668 6.94522ZM2.32309 9.24511L6.75662 13.6789C6.86118 13.7835 6.98532 13.8664 7.12195 13.923C7.25858 13.9796 7.40502 14.0087 7.55291 14.0087C7.7008 14.0087 7.84724 13.9796 7.98387 13.923C8.1205 13.8664 8.24464 13.7835 8.3492 13.6789L13.665 8.3626C13.8766 8.15141 13.9957 7.86485 13.9962 7.56589V3.13354C13.996 2.98568 13.9667 2.8393 13.91 2.70277C13.8532 2.56624 13.7701 2.44223 13.6654 2.33783C13.5607 2.23344 13.4365 2.15069 13.2998 2.09434C13.1631 2.03798 13.0166 2.00912 12.8688 2.00939L8.4337 2.00877C8.28592 2.00855 8.13955 2.0375 8.00299 2.09395C7.86642 2.1504 7.74233 2.23324 7.63783 2.33773L2.32354 7.65185C2.11221 7.86307 1.99343 8.14959 1.99335 8.44838C1.99326 8.74718 2.11187 9.03376 2.32309 9.24511Z" fill="#666666"></path>
+                        <path id="Vector_2" d="M9.99995 4C11.1046 4 12 4.89543 12 6.00005C12 7.10467 11.1046 7.99999 9.99995 7.99999C8.89533 7.99999 7.99996 7.10455 7.99996 5.99999C7.99996 4.89543 8.89545 4 9.99995 4ZM9.2922 6.70775C9.45593 6.87151 9.67138 6.97343 9.90184 6.99614C10.1323 7.01885 10.3635 6.96095 10.5561 6.8323C10.7486 6.70366 10.8906 6.51223 10.9578 6.29063C11.0251 6.06903 11.0134 5.83097 10.9248 5.61702C10.8361 5.40307 10.6761 5.22647 10.4719 5.1173C10.2676 5.00814 10.0319 4.97316 9.80474 5.01834C9.57762 5.06352 9.37319 5.18605 9.22628 5.36506C9.07937 5.54407 8.99908 5.76848 8.99908 6.00005C8.99873 6.13154 9.02446 6.26179 9.07478 6.38326C9.12511 6.50474 9.19897 6.61503 9.2922 6.70775Z" fill="#666666"></path>
+                      </g>
+                    </svg>
+                    <span style="margin-left: 5px;">GET FREE 3D GLASSES 4 PCS (- $0.00)</span>
+                  </span>
+                </p>
+                <div class="quantity-wrap">
+                  <div class="quantity-select quantity-popover-container">
+                    <quantity-input class="quantity cart-quantity">
+                      <button class="quantity__button" name="minus" type="button">
+                        <span class="visually-hidden">Decrease quantity for 3D Glasses (2 Pairs)</span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          aria-hidden="true"
+                          focusable="false"
+                          class="icon icon-minus"
+                          fill="none"
+                          viewBox="0 0 10 2"
+                        >
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M.5 1C.5.7.7.5 1 .5h8a.5.5 0 110 1H1A.5.5 0 01.5 1z" fill="currentColor">
+                          </path>
+                        </svg>
+                      </button>
+                      <input
+                        class="quantity__input"
+                        data-quantity-variant-id="{{ item.variant.id }}"
+                        type="number"
+                        name="updates[]"
+                        value="{{ item.quantity }}"
+                        {% # theme-check-disable %}
+                        data-cart-quantity="{{ cart | item_count_for_variant: item.variant.id }}"
+                        min="0"
+                        data-min="{{ item.variant.quantity_rule.min }}"
+                        {% if item.variant.quantity_rule.max != null %}
+                          max="{{ item.variant.quantity_rule.max }}"
+                        {% endif %}
+                        step="{{ item.variant.quantity_rule.increment }}"
+                        {% # theme-check-enable %}
+                        aria-label="{{ 'products.product.quantity.input_label' | t: product: item.product.title | escape }}"
+                        id="Quantity-{{ item.index | plus: 1 }}"
+                        data-index="{{ item.index | plus: 1 }}"
+                      >
+                      <button class="quantity__button" name="plus" type="button">
+                        <span class="visually-hidden">Increase quantity for 3D Glasses (2 Pairs)</span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          aria-hidden="true"
+                          focusable="false"
+                          class="icon icon-plus"
+                          fill="none"
+                          viewBox="0 0 10 10"
+                        >
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M1 4.51a.5.5 0 000 1h3.5l.01 3.5a.5.5 0 001-.01V5.5l3.5-.01a.5.5 0 00-.01-1H5.5L5.49.99a.5.5 0 00-1 .01v3.5l-3.5.01H1z" fill="currentColor">
+                          </path>
+                        </svg>
+                      </button>
+                    </quantity-input>
+                  </div>
+                  <xw-cart-remove-button
+                    class="quantity-remove-btn"
+                    id="Remove-{{ item.index | plus: 1 }}"
+                    data-index="{{ item.index | plus: 1 }}"
+                  >
+                    <a
+                      href="{{ item.url_to_remove }}"
+                      class="button button--tertiary"
+                      aria-label="{{ 'sections.cart.remove_title' | t: title: item.title | escape }}"
+                    >
+                      Remove
+                    </a>
+                  </xw-cart-remove-button>
+                </div>
 
-              <p class="price-wrap">
-                <span class="current-price">{{- item.final_price | money -}}</span>
-                <span class="original-price">{{- item.original_price | money -}}</span>
-                <span class="save-fees">{{- item.line_level_total_discount | money -}}</span>
-              </p>
-              <p class="affirm-wrap">
-                Starting at $271/mo or 0% APR with
-                <span class="affirm-ala-price">$14</span> /mo with
-                <a
-                  class="affirm-modal-trigger"
-                  aria-label="Learn more - Learn more about Affirm Financing (opens in modal)"
-                  href="javascript:void(0)"
-                  >Learn more</a
-                >
-              </p>
-              <p class="shipping-wrap">
-                <span class="shipping_small_title">Order Now, </span>3D Glasses Estimated Delivery :
-                <span class="date_container">08/15-08/18</span>
-              </p>
+                <p class="price-wrap">
+                  <span class="current-price">{{- item.final_line_price | money -}}</span>
+                  <span class="original-price">{{- item.original_line_price | money -}}</span>
+                  <span class="save-fees">{{- item.line_level_total_discount | money -}}</span>
+                </p>
+                <p class="affirm-wrap">
+                  Starting at $271/mo or 0% APR with
+                  <span class="affirm-ala-price">$14</span> /mo with
+                  <a
+                    class="affirm-modal-trigger"
+                    aria-label="Learn more - Learn more about Affirm Financing (opens in modal)"
+                    href="javascript:void(0)"
+                    >Learn more</a
+                  >
+                </p>
+                <p class="shipping-wrap">
+                  <span class="shipping_small_title">Order Now, </span>3D Glasses Estimated Delivery :
+                  <span class="date_container">08/15-08/18</span>
+                </p>
+              </div>
             </div>
-          </div>
-        {% endfor %}
-      {%- endif -%}
-    </div>
+          {% endfor %}
+        {%- endif -%}
+      </div>
+    </form>
     <div class="body-bill">
       <div class="bill-details">
         <div class="details-title">Order Summary</div>
@@ -189,15 +195,11 @@
           class="shoppay-wrap kqsiVA9Jf8LJAbxw8Bau h7OYsWHrW5495r9beh2n DefhEHZZf4y32pvV7mZj DnvZqPMEvBFbBre5UuP9 size--small"
           data-testid="ShopifyPay-button"
         >
-          <span class="ElVMgDjOgshGFMIvg3se">
-            <svg
-              preserveAspectRatio="xMidYMid"
-              class="qZgSr5RiiBCTAMfQYsty"
-              style="height: 20px; width: 85px; fill: white;"
-            >
-              <use xlink:href="#shopify-svg__payments-shop-pay"></use>
-            </svg>
-          </span>
+          <img
+            width="110"
+            height="26"
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAAAsCAYAAACHUEHxAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAgPSURBVHhe7VwHkxRFGPUvmXMos5apCiM5FxzxoAjC1SFZsiAKSk4FFMlD8hFEggQRRJIeSUCyJG93dvdut+03u33b801P4mZmOehX9epqd3p6uqfffKln76HmD9cyTc2wqYWlGQm1sDQjoRaWZiTUwtKMhFpYmpFQC0szEpZEWB2fT7DhnQwLO7+UULa9H9n1lQSraJm03YN7gRgXxqcadxCWRFijywxG8VW/lLLt/cYD2+sLM763gXGqxu+XWlgx8vypbGG2TQMYr2oefqiFFROXT88UZtq0gHGr5uNFLayYuHtDXWGmTQsYt2o+XtTCionH9jeN2IoC41bNx4uhCKvVY7Xsi3b5rGLQZ0nWxSOrGN3VXVjd3shnjchQ2jxpP5+yxSO1bFgHg21ammE3r+XM/rI8nLl+OcdOHKxna+Zl2LieBmv9hPp8wf4fWjO1gZ8kbW16vp1gla34HF8OljlpYQXg+F4G21tdx2pv5xdTxs3rOfbj3Azr9Y59AZyENaRNkv32cz3LSTFujnd94XSWzRimtmgQw5nj/oLi/27l2PJpadbyUXs/4MEd1sWv+SMfvEJkuMFpMuwrF/JzLHvNW2RaWD65doG/YLSON1vBA8AW0mKO6mIX1rFfuaDs+rQAC9/+OesiwkIGxfED9azjC3YxUGFB0NurvGMjzHHx5LStP5l+hDW8o6E8tzu34EPbG2zLivjjtFiFNWd0unBZ/8CTLc5XWSy/UNVXNi8LfsMh5FaPW/uhwgoKPGxyfzIbIyyZcWeXsQkLbgRuToaRyLG5X6YbYhO4mwzRXooblq6v5q2Em7BOH8uy9YsybNuqOnaVuxoVRna2LgCsz+0bOfbX71k2tofBeryVMC0kOLGPwf7kcZYKq+dYheAmLLjBDYszpvXF+KhbFMD85T4FgwhLbgv3jcxMTvsTdzxMe4iITVi9ecxEoYp/yt9NsmRtzgymF01Ksw6SC1NlhcC8sVZ3gsB91zq7NfqJuye5Hdjtdfc4Z9bIlM3VQvw93iye5yQsWNt2z1j7w2ckBRTnatRFxbsVloBcrDx7Ir5Ca2zCKn/PHtPs2VSnzLj6fpC0uRtQJSwIiLYD0e+NK1ZFXPrbvnhTBqTYBX7zYbHoMcFZI1KFHoqomlW0BCph7VrvXsfZu9ku/DHd7GNorLAunbMLC2KDJZtemWrwFngIBHBMUAVx7PBu57HFJixYEermALgGuJwfZmZMV9X2afX5oEpYs0c5B7+/bLQuXj2/DygxiONLpxYHdO1ijrV9ynq+TATkMi6fLy4YFRbm6bU5XsbdO0obMrautIuxMcL6lz9YcMOiL7jCk4WMVcV5Y/L34xYPWcR3eOhkIJPH9wM+ck9+YhMWiEl6ASWDU0ez7LshKbPOJZ8ftEC6bqH9eu2fzS94ZWv7jaGxk0wcoxB9HdppXVC/NxVxoQx8pm2CCAt/TXILNOBjq9UX9/6bwfn7Nbl/il08mzXjXNTsRDuIEcD9x2dYNRkwAPi+arb7WsYqLEx0/1bvGyVw8UzWjLnE+WEKa98WuytC4E/7EMSCUPRrlh8bFRbmSM9XkVpU2VIIBhGWE2cOL45duLGaw1ZRi+RBXO/kkaLIMS4BUXuDhXdDrMIC4Yq+rUiZN7/evrY2XL+Ua3ArYQpLvlmAyg3JRCxGgYQEx6iw3NyNzKP7rOfB7dA2QYSFtjL/4e4biRAFji2ZkjYz388/TZoJjLBuOCYgxLby+/x9FBYV1s4L6Adtg/KuhSUTZQQMfuqgFNuxps4MrlVALIT2YQkLsRQFXKOqD0E5uBUQ8SCNsRDLeW1P4WGhMSesKG0nL7QTZGF5QX6ABjdPmnEVLBi1WMCe6nxbZOYwArB8+Kyy9hQlERbM6TTuu1XH+ryfNGswMmARcCwsYaFORUsIbv10ejHB7ty0niBbJVVWCDcn90GpemthRmHhZPoSlkIUTujDs3O0RUYuIIuA9oHqPb7Hfir+wv37QazCwlO6dn7G3MoAvh6oXswjxEXAZeD7MF0hzXZg5lUlDhRRqcsCFk4sZqNOdaxVPNCVs1AQn1WBLzI2vHottwWjEpZoi784H/ut+J5u/4iEZiBPBvAX1s0PYhMWFg1VbgpMpKJF0nQr2P1HfYhCbHmEKSzs0VEgnls+Pc0mlBtsRGfDLNBSSwXcuJqzvD3hJCwAtSPMCZV3LNL5GrW7x3aX6E9m2MKqXla0pOK8Md0NtmBC8foysPMhvgfpA+mE2IQFqgqNXoB1E286hCksxFkQSFAgLsLGrnwdN2H5gWpHQNCPWESm56ctsI4/qCgjgBAaiqgA4tydaxUuurBD4idoF4hVWCDqIH6Bmpaou4BhCgsc2s7wfDNCBmI/7FfK1wBpVmjwTAz7j36wgy+k0+s4oF+xRIX924oCCfKDjtiFBeL1F8QtbouKSrfw+4JhCwvEi4aol7kBVmrjkkzDZjgltVjYSkKCMH9c2hSZCgj+J/VN2WIwylIJC25Sni/i4SAoibAEUT9BPIONXrzZgDgEG8pOqX/Q3xXChdL2qnao8GMM2Hc8dSRrxhWIJVCtHt/bfZsJVAlLHMOeJWJIZMGI6/Ag4E1X+Xw3lkpYuHYZXx/soW5f7V1eoCipsO4XHtrlLKzGslTCaiy0sEJglMLSv9J5gBmlsPzWje41YNyq+XhRC0tilMIC9S+hH1BGLSxQ/+8GTc1GUAtLMxJqYWlGQi0szUiohaUZCbWwNCOhFpZmBKxl/wNPGMk0Xx8qzgAAAABJRU5ErkJggg=="
+          >
         </div>
       </div>
       <div class="payment-wrap">
@@ -378,7 +380,7 @@
       </div>
     </div>
   </div>
-</div>
+</section-xw-cart-container>
 
 {% schema %}
 {

@@ -1,0 +1,11 @@
+{
+    "sections": {
+        "xw-cart": {
+            "type": "xw-cart",
+            "settings": {}
+        }
+    },
+    "order": [
+        "xw-cart"
+    ]
+}
